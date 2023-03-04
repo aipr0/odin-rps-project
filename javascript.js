@@ -92,9 +92,9 @@ function testBeforePlay(choice) {
         }
     }
 
-    selectRock.removeEventListener('click', rockEventHandler);
-    selectPaper.removeEventListener('click', paperEventHandler);
-    selectScissors.removeEventListener('click', scissorsEventHandler);
+    selectRock.removeEventListener('click', namedCallBack);
+    selectPaper.removeEventListener('click', namedCallBack);
+    selectScissors.removeEventListener('click', namedCallBack);
 }
 
 //Creates buttons to select choice and appends them to the page body
@@ -114,17 +114,11 @@ document.body.appendChild(selectScissors);
 const resultsDiv = document.createElement('div');
 document.body.appendChild(resultsDiv);
 
-function rockEventHandler() {
-    testBeforePlay("rock");
-}
-function paperEventHandler() {
-    testBeforePlay("paper");
-}
-function scissorsEventHandler() {
-    testBeforePlay("scissors");
+function namedCallBack(e) {
+    testBeforePlay(e.target.textContent);
 }
 
 //Second parameter must be a function, I had to use an arrow function since playRound calls a function itself. Weird order of things, I don't know exactly
-selectRock.addEventListener('click', rockEventHandler);
-selectPaper.addEventListener('click', paperEventHandler);
-selectScissors.addEventListener('click', scissorsEventHandler);
+selectRock.addEventListener('click', namedCallBack);
+selectPaper.addEventListener('click', namedCallBack);
+selectScissors.addEventListener('click', namedCallBack);
