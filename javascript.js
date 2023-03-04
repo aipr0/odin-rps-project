@@ -17,8 +17,8 @@ function computerChoose() {
 function playRound(playerChoice, computerChoice) {
 
     //This will display who picked what choice
-    console.log(playerChoice);
-    console.log(computerChoice);
+    resultsDiv.textContent += (`${playerChoice}\n`);
+    resultsDiv.textContent += (`${computerChoice}\n`);
 
     //First if statement clears up the tie issue, the rest is the process of eliminating the other possibilities to evaluate
     //The return values are used in game()'s main for loop to divy out the win tallies
@@ -85,6 +85,7 @@ function game() {
         }
     }
 
+
     //Just prints out the total tally for both players
     console.log(playerWins);
     console.log(computerWins);
@@ -101,6 +102,31 @@ function game() {
     }
 }
 
+//Creates buttons to select choice and appends them to the page body
+const selectRock = document.createElement('button');
+const selectPaper = document.createElement('button');
+const selectScissors = document.createElement('button');
+
+selectRock.textContent = "Rock";
+selectPaper.textContent = "Paper";
+selectScissors.textContent = "Scissors";
+
+document.body.appendChild(selectRock);
+document.body.appendChild(selectPaper);
+document.body.appendChild(selectScissors);
+
+//Div to seperate display of ongoing results of game
+const resultsDiv = document.createElement('div');
+document.body.appendChild(resultsDiv);
+
+//Second parameter must be a function, I had to use an arrow function since playRound calls a function itself. Weird order of things, I don't know exactly
+selectRock.addEventListener('click', () => playRound("rock", computerChoose()));
+selectPaper.addEventListener('click', () => playRound("paper", computerChoose()));
+selectScissors.addEventListener('click', () => playRound("scissors", computerChoose()));
+
+
+
+
 //Simply calls the main game function
-game();
+//game();
 
