@@ -15,4 +15,10 @@ function getComputerChoice() {
     return choiceFinal;
 }
 
-console.log(getComputerChoice());
+function gameRound(playerSelection, computerSelection) {
+    const playerVal = playerSelection.toLowerCase();
+    const computerVal = computerSelection.toLowerCase();
+
+}
+
+gameRound(prompt("Rock, paper, scissors!", ""), getComputerChoice());
