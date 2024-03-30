@@ -11,7 +11,6 @@ function getComputerChoice() {
         choiceFinal = "Scissors";
     }
 
-    console.log(choiceFinal);
     return choiceFinal;
 }
 
@@ -49,7 +48,9 @@ function gameRound(playerSelection, computerSelection) {
     }
 }
 
-let a = gameRound(prompt("Rock, paper, scissors!", ""), getComputerChoice());
+function getPlayerChoice() {
+    return prompt("Rock, paper, scissors!", "");
+}
+
+let a = gameRound(getPlayerChoice(), getComputerChoice());
 console.log(a);
-
-
