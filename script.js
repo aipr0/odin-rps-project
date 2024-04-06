@@ -22,6 +22,11 @@ function getComputerChoice() {
 
 // Plays a single round
 function playRound(playerSelection, computerSelection) {
+
+    if(playerWins === 5 || computerWins === 5) {
+        return;
+    }
+
     // Standardises return values from get choice functions
     const playerVal = playerSelection.toLowerCase();
     const computerVal = computerSelection.toLowerCase();
@@ -72,7 +77,14 @@ function playRound(playerSelection, computerSelection) {
     }
 
     const runningTally = document.createElement("p");
-    runningTally.textContent = `Player currently has ${playerWins} points, and PC has ${computerWins} points`;
+
+    if(playerWins === 5) {
+        runningTally.textContent = "Player wins the game!";
+    } else if(computerWins === 5) {
+        runningTally.textContent = "Computer wins the game!"
+    } else {
+        runningTally.textContent = `Player currently has ${playerWins} points, and PC has ${computerWins} points`;
+    }
 
     container.appendChild(runningTally);
 }
