@@ -47,29 +47,34 @@ function playRound(playerSelection, computerSelection) {
 
     if(playerVal === "rock") {
         if(computerVal === "paper") {
-            computerWins++;
+            ++computerWins;
             container.appendChild(computerWinText);
         } else if(computerVal === "scissors") {
-            playerWins++;
+            ++playerWins;
             container.appendChild(playerWinText);
         }
     } else if(playerVal === "paper") {
         if(computerVal === "rock") {
-            playerWins++;
+            ++playerWins;
             container.appendChild(playerWinText);
         } else if(computerVal === "scissors") {
-            computerWins++;
+            ++computerWins;
             container.appendChild(computerWinText);
         }
     } else if(playerVal === "scissors") {
         if(computerVal === "rock") {
-            computerWins++;
+            ++computerWins;
             container.appendChild(computerWinText);
         } else if(computerVal === "paper") {
-            playerWins++;
+            ++playerWins;
             container.appendChild(playerWinText);
         }
     }
+
+    const runningTally = document.createElement("p");
+    runningTally.textContent = `Player currently has ${playerWins} points, and PC has ${computerWins} points`;
+
+    container.appendChild(runningTally);
 }
 
 // // Plays a whole game, five rounds of RPS, and determines the winner/loser
