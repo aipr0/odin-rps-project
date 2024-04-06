@@ -2,10 +2,10 @@
 let playerWins = 0;
 let computerWins = 0;
 
-// returns player's choice
-function getPlayerChoice() {
-    return prompt("Rock, paper, scissors!", "rock");
-}
+// // returns player's choice
+// function getPlayerChoice() {
+//     return prompt("Rock, paper, scissors!", "rock");
+// }
 
 // when called, returns PC's choice
 function getComputerChoice() {
@@ -16,7 +16,7 @@ function getComputerChoice() {
     } else if(choiceNum === 1) {
         return "Paper";
     } else {
-        return"Scissors";
+        return "Scissors";
     }
 }
 
@@ -64,20 +64,28 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// Plays a whole game, five rounds of RPS, and determines the winner/loser
-function playGame() {
+// // Plays a whole game, five rounds of RPS, and determines the winner/loser
+// function playGame() {
 
-    for(i = 0; i < 5; i++) {
-        playRound(getPlayerChoice(), getComputerChoice());
-    }
+//     for(i = 0; i < 5; i++) {
+//         playRound(getPlayerChoice(), getComputerChoice());
+//     }
 
-    if(playerWins === computerWins) {
-        console.log("The game is tied!");
-    } else if (playerWins > computerWins) {
-        console.log("Player wins the game!");
-    } else {
-        console.log("Computer wins the game!")
-    }
-}
+//     if(playerWins === computerWins) {
+//         console.log("The game is tied!");
+//     } else if (playerWins > computerWins) {
+//         console.log("Player wins the game!");
+//     } else {
+//         console.log("Computer wins the game!")
+//     }
+// }
 
-playGame();
+// playGame();
+
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        playRound(button.id, getComputerChoice());
+    });
+});
