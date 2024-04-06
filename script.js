@@ -26,40 +26,48 @@ function playRound(playerSelection, computerSelection) {
     const playerVal = playerSelection.toLowerCase();
     const computerVal = computerSelection.toLowerCase();
 
+    const container = document.querySelector("#results");
+
     // Setting text as a val because I'm lazy
-    const playerWinText = "Player wins!";
-    const computerWinText = "Computer wins!"
+    const playerWinText = document.createElement("p");
+    playerWinText.textContent = "Player wins!";
+
+    const computerWinText = document.createElement("p");
+    computerWinText.textContent = "Computer wins!";
+
+    const tieText = document.createElement("p");
+    tieText.textContent = "It's a tie!";
 
     // I want to assign the values for RPS as numbers for logic used in this function. Might not be practical though
 
     // Function will break here if it's a tie
     if(playerVal === computerVal) {
-        console.log("It's a tie!");
+        container.appendChild(tieText);
     }
 
     if(playerVal === "rock") {
         if(computerVal === "paper") {
             computerWins++;
-            console.log(computerWinText);
+            container.appendChild(computerWinText);
         } else if(computerVal === "scissors") {
             playerWins++;
-            console.log(playerWinText);
+            container.appendChild(playerWinText);
         }
     } else if(playerVal === "paper") {
         if(computerVal === "rock") {
             playerWins++;
-            console.log(playerWinText);
+            container.appendChild(playerWinText);
         } else if(computerVal === "scissors") {
             computerWins++;
-            console.log(computerWinText);
+            container.appendChild(computerWinText);
         }
     } else if(playerVal === "scissors") {
         if(computerVal === "rock") {
             computerWins++;
-            console.log(computerWinText);
+            container.appendChild(computerWinText);
         } else if(computerVal === "paper") {
             playerWins++;
-            console.log(playerWinText);
+            container.appendChild(playerWinText);
         }
     }
 }
@@ -82,7 +90,7 @@ function playRound(playerSelection, computerSelection) {
 
 // playGame();
 
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll("#button-container button");
 
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
